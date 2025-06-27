@@ -15,7 +15,7 @@ RiddlesNet is a React web application that generates riddles using AI (Google Ge
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository_link>
+   git clone [https://github.com/ByteMe6/riddles-net](https://github.com/ByteMe6/riddles-net)
    cd RiddlesNet
    ```
 2. **Install dependencies:**
