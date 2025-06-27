@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import { auth } from './firebaseConfig'; 
 
-export default function LogoutButton() {
+export default function LogoutButton({ lang = 'eng' }) {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -12,9 +12,15 @@ export default function LogoutButton() {
       });
   };
 
+  const translations = {
+    eng: 'Logout',
+    ru: 'Выйти',
+    ua: 'Вийти',
+  };
+
   return (
     <button onClick={handleLogout} className="logout-button">
-      Logout
+      {translations[lang] || translations.eng}
     </button>
   );
 }

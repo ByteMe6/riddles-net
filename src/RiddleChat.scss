@@ -79,7 +79,7 @@ body {
   }
 
   .riddle-text{
-    text-align: center;
+    text-align: left;
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 2rem;
@@ -186,6 +186,7 @@ body {
       font-size: 1.1rem;
       letter-spacing: 0.01em;
       text-shadow: none;
+      text-align: left;
     }
 
     .riddle-chat-riddle {
@@ -201,6 +202,7 @@ body {
       border-left: 4px solid $google-blue;
       border-right: none;
       animation: fadeInRiddle 0.5s ease-out;
+      text-align: left;
     }
 
     @keyframes fadeInRiddle {
@@ -293,7 +295,7 @@ body {
       margin-top: 1rem;
       font-weight: 600;
       font-size: 1.1rem;
-      text-align: center;
+      text-align: left;
       letter-spacing: 0.01em;
       word-break: break-word;
       animation: fadeInResult 0.4s ease-out;
@@ -323,7 +325,7 @@ body {
       background: $dark-bg-riddle-answer;
       border-radius: 12px;
       padding: 0.9rem 1.2rem;
-      text-align: center;
+      text-align: left;
       font-style: normal;
       box-shadow: none;
       word-break: break-word;

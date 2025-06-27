@@ -24,7 +24,7 @@ $border-light-subtle: rgba(255, 255, 255, 0.08); // Light border color
     }
   
     .account-details {
-      text-align: center;
+      text-align: left;
       font-size: 1.2rem;
       color: $dark-text-primary;
       
@@ -81,3 +81,101 @@ $border-light-subtle: rgba(255, 255, 255, 0.08); // Light border color
       }
     }
   }
+
+// Кастомный select
+.custom-select {
+  position: relative;
+  display: inline-block;
+  min-width: 140px;
+  font-size: 1rem;
+  margin-left: 8px;
+}
+.custom-select-selected {
+  background: #3d3d3d;
+  color: #e0e0e0;
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  border: 1.5px solid #555;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7em;
+  min-width: 120px;
+}
+.select-arrow {
+  font-size: 1.1em;
+  margin-left: 0.5em;
+  color: #fff;
+  transition: transform 0.2s;
+}
+.select-arrow.open {
+  transform: rotate(-180deg);
+}
+.custom-select-selected:focus, .custom-select-selected:hover {
+  border-color: #5097f7;
+  box-shadow: 0 0 0 2px rgba(80,151,247,0.10);
+}
+.custom-select-options {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: #232323;
+  border: 1.5px solid #5097f7;
+  border-radius: 10px;
+  z-index: 2001;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  margin-top: 4px;
+  animation: fadeInModal 0.18s;
+}
+.custom-select-option {
+  padding: 0.7rem 1.1rem;
+  cursor: pointer;
+  color: #e0e0e0;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 8px;
+}
+.custom-select-option:hover {
+  background: #5097f7;
+  color: #fff;
+}
+
+// Кастомный input
+.custom-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 1.1rem;
+  border: 1.5px solid #555;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #3d3d3d;
+  color: #e0e0e0;
+  outline: none;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(80,151,247,0.04);
+}
+.custom-input:focus {
+  border: 2px solid #5097f7;
+  box-shadow: 0 0 0 2px rgba(80,151,247,0.15);
+}
+
+// Кастомные кнопки
+.modal-save-btn, .modal-close-btn {
+  margin-right: 8px;
+  min-width: 110px;
+  font-size: 1.05rem;
+}
+
+// Modal header
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
