@@ -1,0 +1,325 @@
+// --- Variables ---
+// Base Colors
+$dark-bg-primary: #1a1a1a;
+$dark-bg-secondary: #282828;
+$dark-bg-content: #333333;
+$dark-bg-riddle-answer: #3d3d3d;
+$dark-text-primary: #e0e0e0;
+$dark-text-secondary: #f0f0f0;
+$dark-text-muted: #808080; // For disabled states
+
+// Accent Colors
+$google-blue: #5097f7; // Main accent blue
+$google-blue-hover: #60a7ff;
+$google-green: #83c686; // Check button green
+$google-green-hover: #76cc7a;
+$google-red: #ff8a80; // Error red
+$google-red-lighter: rgba(255, 138, 128, 0.08); // For error background
+$google-blue-lighter: rgba(80, 151, 247, 0.2); // For input focus ring
+$google-green-lighter: rgba(102, 187, 106, 0.4); // For check button shadow
+
+// Border & Shadow Colors
+$border-light-subtle: rgba(255, 255, 255, 0.08);
+$border-dark-input: #555555;
+$shadow-dark-primary: rgba(0, 0, 0, 0.4); // For container
+$shadow-dark-button: rgba(80, 151, 247, 0.4); // For blue button
+$shadow-dark-button-hover: rgba(80, 151, 247, 0.5); // For blue button hover
+$shadow-dark-check-button: rgba(102, 187, 106, 0.4); // For green button
+$shadow-dark-check-button-hover: rgba(102, 187, 106, 0.5); // For green button hover
+$shadow-dark-content: rgba(0, 0, 0, 0.2);
+
+// --- General Styles ---
+body {
+  background: $dark-bg-primary;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Google Sans', 'Roboto', 'Inter', sans-serif;
+  color: $dark-text-primary;
+}
+
+// --- Riddle Chat Container ---
+.riddle-chat-container {
+  max-width: 600px;
+  margin: 7vh auto 0 auto;
+  background: $dark-bg-secondary;
+  border-radius: 28px;
+  box-shadow: 0 4px 20px $shadow-dark-primary;
+  padding: 2.5rem 2rem;
+  border: 1px solid $border-light-subtle;
+  transition: box-shadow 0.3s ease;
+
+  @media (max-width: 900px) {
+    max-width: 95vw;
+    padding: 1.8rem 1rem;
+  }
+  @media (max-width: 600px) {
+    max-width: 100vw;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  // --- Title ---
+  .riddle-chat-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: $dark-text-secondary;
+    letter-spacing: 0.01em;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    text-shadow: none;
+    word-break: break-word;
+    animation: none;
+  }
+
+  // --- General Button Styles ---
+  .riddle-chat-button {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    border-radius: 16px;
+    background: $google-blue;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px $shadow-dark-button;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+
+    &::after { 
+      content: "";
+      position: absolute;
+      left: -75%;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.4s ease;
+    }
+
+    &:hover:not(&-disabled) {
+      &::after {
+        left: 120%;
+      }
+      background: $google-blue-hover;
+      box-shadow: 0 4px 12px $shadow-dark-button-hover;
+      transform: translateY(-1px);
+    }
+
+    &-disabled {
+      background: $dark-bg-riddle-answer !important;
+      color: $dark-text-muted;
+      cursor: not-allowed;
+      opacity: 1;
+      box-shadow: none !important;
+    }
+  }
+
+  // --- Error Message ---
+  .riddle-chat-error {
+    color: $google-red;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 500;
+    background: $google-red-lighter;
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    box-shadow: none;
+    border: 1px solid rgba(255, 138, 128, 0.2);
+    word-break: break-word;
+    animation: shake 0.3s ease-out;
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+  }
+
+  // --- Content Area ---
+  .riddle-chat-content {
+    margin-bottom: 1.5rem;
+    background: $dark-bg-content;
+    border-radius: 16px;
+    padding: 1.5rem 1.2rem;
+    box-shadow: 0 2px 10px $shadow-dark-content;
+    backdrop-filter: none;
+
+    @media (max-width: 600px) {
+      padding: 0.8rem 0.5rem;
+    }
+
+    .riddle-chat-label {
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: lighten($google-blue, 20%); 
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      text-shadow: none;
+    }
+
+    .riddle-chat-riddle {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      color: $dark-text-primary;
+      font-style: normal;
+      background: $dark-bg-riddle-answer; 
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      box-shadow: none;
+      word-break: break-word;
+      border-left: 4px solid $google-blue;
+      border-right: none;
+      animation: fadeInRiddle 0.5s ease-out;
+    }
+
+    @keyframes fadeInRiddle {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .riddle-chat-input-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .riddle-chat-input {
+        flex: 1;
+        padding: 0.9rem 1.2rem;
+        border: 1px solid $border-dark-input;
+        border-radius: 10px;
+        font-size: 1rem;
+        background: darken($dark-bg-content, 5%); 
+        color: $dark-text-primary;
+        transition: all 0.2s ease;
+        outline: none;
+        min-width: 0;
+        font-weight: 400;
+        box-shadow: none;
+
+        &:focus {
+          border: 2px solid $google-blue;
+          background: darken($dark-bg-content, 5%);
+          box-shadow: 0 0 0 2px $google-blue-lighter;
+        }
+      }
+
+      .riddle-chat-check-button {
+        padding: 0.9rem 1.8rem;
+        background: $google-green;
+        color: #ffffff;
+        border-radius: 10px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px $shadow-dark-check-button;
+        letter-spacing: 0.01em;
+        position: relative;
+        overflow: hidden;
+
+        @media (max-width: 600px) {
+          width: 100%;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: -60%;
+          top: 0;
+          width: 40%;
+          height: 100%;
+          background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transform: skewX(-20deg);
+          transition: left 0.4s ease;
+        }
+
+        &:hover:not(:disabled) {
+          &::after {
+            left: 120%;
+          }
+          background: $google-green-hover;
+          box-shadow: 0 4px 12px $shadow-dark-check-button-hover;
+          transform: translateY(-1px);
+        }
+
+        &:disabled {
+          background: $dark-bg-riddle-answer !important;
+          color: $dark-text-muted;
+          cursor: not-allowed;
+          opacity: 1;
+          box-shadow: none !important;
+        }
+      }
+    }
+
+    .riddle-chat-result {
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-align: center;
+      letter-spacing: 0.01em;
+      word-break: break-word;
+      animation: fadeInResult 0.4s ease-out;
+    }
+
+    @keyframes fadeInResult {
+      from { opacity: 0; transform: scale(0.98);}
+      to { opacity: 1; transform: scale(1);}
+    }
+
+    .riddle-chat-result-correct {
+      color: lighten($google-green, 15%); 
+      text-shadow: none;
+      animation: none;
+    }
+
+    .riddle-chat-result-incorrect {
+      color: $google-red;
+      text-shadow: none;
+      animation: none;
+    }
+
+    .riddle-chat-answer {
+      margin-top: 1rem;
+      color: $dark-text-primary;
+      font-size: 1rem;
+      background: $dark-bg-riddle-answer;
+      border-radius: 12px;
+      padding: 0.9rem 1.2rem;
+      text-align: center;
+      font-style: normal;
+      box-shadow: none;
+      word-break: break-word;
+      border-top: none;
+      border-bottom: 3px solid $google-blue;
+      animation: fadeInAnswer 0.5s ease-out;
+    }
+
+    @keyframes fadeInAnswer {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  }
+}
