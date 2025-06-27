@@ -113,7 +113,6 @@ export default function Account() {
     if (showModal && modalTab === 'username' && userData) {
       setUsername(userData.username || '');
     }
-    // eslint-disable-next-line
   }, [showModal, modalTab]);
 
   // Сброс пароля только при открытии модалки смены пароля

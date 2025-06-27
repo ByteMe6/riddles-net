@@ -1,5 +1,5 @@
 import { FaHome, FaSearch, FaPlusCircle, FaHeart, FaUserAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // For navigation links
+import { Link } from 'react-router-dom';
 import './NavMenu.scss';
 import { useContext } from 'react';
 import { LangContext } from './App';

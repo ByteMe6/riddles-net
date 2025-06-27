@@ -67,13 +67,11 @@ function RiddleChat() {
           setLang(data.lang);
         }
         if (!data) {
-          // Если пользователя нет, добавляем его с 0 очками
           set(userRef, {
             username: user.displayName || user.email,
             score: 0,
             lang: 'eng',
           });
-          // Добавляем его в leaderboard с 0 очками
           set(ref(db, `leaderboard/${user.uid}`), {
             username: user.displayName || user.email,
             score: 0,
@@ -81,7 +79,7 @@ function RiddleChat() {
         }
       });
     }
-  }, []); // Это выполняется один раз при монтировании компонента
+  }, []);
 
   useEffect(() => { setLang(contextLang); }, [contextLang]);
 
@@ -148,36 +146,11 @@ function RiddleChat() {
       .trim();
   }
 
-  async function checkAnswer(e) {
-    e.preventDefault();
-    if (!userAnswer.trim()) return;
-
-    const normalizedUserAnswer = normalizeAnswer(userAnswer);
-    const normalizedAnswer = normalizeAnswer(answer);
-
-    if (normalizedUserAnswer === normalizedAnswer) {
-      setResult('Correct! 🎉. You can click "get a riddle" and get another one');
-
-      const user = auth.currentUser;
-      if (user) {
-        const userRef = ref(db, `users/${user.uid}`);
-        const snapshot = await get(userRef);
-        const data = snapshot.val() || { score: 0, username: user.displayName || user.email };
-
-        // Обновляем очки
-        await set(userRef, {
-          ...data,
-          score: data.score + 1,
-        });
-
-        // Обновляем данные в leaderboard
-        await set(ref(db, `leaderboard/${user.uid}`), {
-          username: data.username,
-          score: data.score + 1,
-        });
-      }
+  function checkAnswer() {
+    if (normalizeAnswer(userAnswer) === normalizeAnswer(answer)) {
+      setResult(translations[lang].correct);
     } else {
-      setResult('Incorrect. Try another one (click get a riddle)!');
+      setResult(translations[lang].incorrect);
     }
   }
 
@@ -219,20 +192,8 @@ function RiddleChat() {
               {translations[lang].check}
             </button>
           </div>
-          {result && (
-            <div
-              className={`riddle-chat-result ${
-                result.startsWith('Correct') || result.startsWith('Верно') || result.startsWith('Вірно')
-                  ? 'riddle-chat-result-correct'
-                  : 'riddle-chat-result-incorrect'
-              }`}
-            >
-              {result.startsWith('Correct') || result.startsWith('Верно') || result.startsWith('Вірно')
-                ? translations[lang].correct
-                : translations[lang].incorrect}
-            </div>
-          )}
-          {result && <div className="riddle-chat-answer">{translations[lang].answer} {answer}</div>}
+          {result && <div className="riddle-chat-result">{result}</div>}
+          {answer && result && <div className="riddle-chat-answer">{translations[lang].answer} {answer}</div>}
         </div>
       )}
     </div>

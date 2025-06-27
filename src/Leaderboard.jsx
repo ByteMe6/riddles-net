@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { auth, db } from './firebaseConfig'; 
+import { auth, db } from './firebaseConfig';
 import { ref, onValue } from 'firebase/database';
 import './Leaderboard.scss';
 import { LangContext } from './App';
@@ -41,7 +41,7 @@ export default function Leaderboard() {
       const user = data[auth.currentUser.uid];
       if (user) {
         const position = sorted.findIndex((leader) => leader.username === user.username);
-        setUserPosition(position + 1); 
+        setUserPosition(position + 1);
       }
     });
 
