@@ -149,6 +149,22 @@ function RiddleChat() {
   function checkAnswer() {
     if (normalizeAnswer(userAnswer) === normalizeAnswer(answer)) {
       setResult(translations[lang].correct);
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = ref(db, `users/${user.uid}`);
+        get(userRef).then((snapshot) => {
+          const data = snapshot.val() || { score: 0, username: user.displayName || user.email };
+          const newScore = (data.score || 0) + 1;
+          set(userRef, {
+            ...data,
+            score: newScore,
+          });
+          set(ref(db, `leaderboard/${user.uid}`), {
+            username: data.username,
+            score: newScore,
+          });
+        });
+      }
     } else {
       setResult(translations[lang].incorrect);
     }
