@@ -1,0 +1,83 @@
+// Color variables
+$dark-bg-secondary: #2f2f2f; // Example color for secondary background
+$dark-text-primary: #e0e0e0; // Primary text color
+$google-blue: #5097f7; // Google blue for accents
+$google-red: #f53d3d; // Google red for error or warning states
+$shadow-dark-primary: rgba(0, 0, 0, 0.4); // Shadow for dark elements
+$border-light-subtle: rgba(255, 255, 255, 0.08); // Light border color
+
+.account-container {
+    max-width: 600px;
+    margin: 5vh auto;
+    padding: 2rem;
+    background: $dark-bg-secondary;
+    border-radius: 28px;
+    box-shadow: 0 4px 20px $shadow-dark-primary;
+    border: 1px solid $border-light-subtle;
+  
+    .account-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: $dark-text-primary;
+    }
+  
+    .account-details {
+      text-align: center;
+      font-size: 1.2rem;
+      color: $dark-text-primary;
+      
+      p {
+        margin-bottom: 1rem;
+      }
+  
+      strong {
+        color: $google-blue;
+      }
+    }
+  
+    .user-position {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: $google-blue;
+    }
+  
+    .logout-button {
+      display: block;
+      margin: 2rem auto;
+      padding: 10px 15px;
+      background-color: $google-red;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &:hover {
+        background-color: rgb(255, 169, 169);
+        border-radius: 20px;
+      }
+    }
+  
+    .links-container {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+  
+      .link {
+        font-size: 1rem;
+        color: #0095f6;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.5rem;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }

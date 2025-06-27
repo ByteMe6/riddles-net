@@ -1,0 +1,22 @@
+{
+    "users": {
+      "sample-uid-1": {
+        "username": "PlayerOne",
+        "score": 10
+      },
+      "sample-uid-2": {
+        "username": "CoolCat",
+        "score": 25
+      }
+    },
+    "leaderboard": {
+      "sample-uid-1": {
+        "username": "PlayerOne",
+        "score": 10
+      },
+      "sample-uid-2": {
+        "username": "CoolCat",
+        "score": 25
+      }
+    }
+  }

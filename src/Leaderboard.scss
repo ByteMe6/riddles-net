@@ -1,0 +1,61 @@
+// Color variables
+$dark-bg-secondary: #2f2f2f; // Background color for the leaderboard container
+$dark-text-primary: #e0e0e0; // Main text color
+$google-blue: #5097f7; // Google-like blue color for strong text
+$google-blue-lighter: rgba(80, 151, 247, 0.2); // Lighter blue for hover effect
+$shadow-dark-primary: rgba(0, 0, 0, 0.4); // Shadow for the leaderboard container
+$border-light-subtle: rgba(255, 255, 255, 0.08); // Subtle border color for the container
+
+// Leaderboard Styles
+.leaderboard-container {
+    max-width: 600px;
+    margin: 5vh auto;
+    padding: 2rem 2rem;
+    background: $dark-bg-secondary;
+    border-radius: 28px;
+    box-shadow: 0 4px 20px $shadow-dark-primary;
+    border: 1px solid $border-light-subtle;
+    
+    h3 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: $dark-text-primary;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+  
+      li {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: $dark-text-primary;
+  
+        strong {
+          color: $google-blue;
+        }
+  
+        &:nth-child(odd) {
+          background-color: rgba(255, 255, 255, 0.1); 
+          border-radius: 8px;
+          padding: 0.5rem;
+        }
+  
+
+      }
+    }
+  }
+
+.user-position {
+  margin-top: 2rem;
+  padding: 0px 10px;
+  background-color: rgba(80, 151, 247, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: $google-blue;
+  box-shadow: 0 2px 8px rgba(80, 151, 247, 0.2);
+}

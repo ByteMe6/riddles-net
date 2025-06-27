@@ -116,7 +116,7 @@ RiddlesNet — це веб-додаток на React, який генерує з
 
 1. **Клонувати репозиторій:**
    ```bash
-   git clone [https://github.com/ByteMe6/riddles-net](https://github.com/ByteMe6/riddles-net)
+   git clone https://github.com/ByteMe6/riddles-net
    cd RiddlesNet
    ```
 2. **Встановити залежності:**
