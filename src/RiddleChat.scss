@@ -76,6 +76,15 @@ body {
     text-shadow: none;
     word-break: break-word;
     animation: none;
+    
+    @media (max-width: 600px) {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      
+      img {
+        height: 1em !important;
+      }
+    }
   }
 
   .riddle-text{
@@ -91,6 +100,12 @@ body {
     text-shadow: none;
     word-break: break-word;
     animation: none;
+    
+    @media (max-width: 600px) {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
   }
 
   // --- General Button Styles ---
@@ -111,6 +126,13 @@ body {
     position: relative;
     overflow: hidden;
 
+    @media (max-width: 600px) {
+      padding: 0.9rem 0;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      border-radius: 12px;
+    }
+
     &::after { 
       content: "";
       position: absolute;
@@ -130,6 +152,10 @@ body {
       background: $google-blue-hover;
       box-shadow: 0 4px 12px $shadow-dark-button-hover;
       transform: translateY(-1px);
+      
+      @media (max-width: 600px) {
+        transform: none;
+      }
     }
 
     &-disabled {

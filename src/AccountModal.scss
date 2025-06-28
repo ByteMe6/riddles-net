@@ -10,6 +10,11 @@
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
+  
+  @media (max-width: 600px) {
+    align-items: flex-end;
+    padding: 0;
+  }
 }
 
 .modal-content {
@@ -19,6 +24,7 @@
   padding: 2.2rem 2rem 1.5rem 2rem;
   min-width: 320px;
   max-width: 95vw;
+  max-height: 90vh;
   color: #e0e0e0;
   font-family: 'Inter', sans-serif;
   border: 1px solid rgba(255,255,255,0.08);
@@ -27,6 +33,16 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  overflow-y: auto;
+  
+  @media (max-width: 600px) {
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 16px 16px 0 0;
+    padding: 1.5rem 1rem 1rem 1rem;
+    margin-bottom: 0;
+  }
 }
 
 @keyframes fadeInModal {
@@ -41,12 +57,22 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: #5097f7;
+  
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .modal-content label {
   display: block;
   font-size: 1.1rem;
   margin-bottom: 0.7rem;
+  
+  @media (max-width: 600px) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .modal-content input[type="password"] {
@@ -59,6 +85,11 @@
   color: #e0e0e0;
   outline: none;
   margin-top: 0.3rem;
+  
+  @media (max-width: 600px) {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.9rem;
+  }
 }
 
 .modal-save-btn {
@@ -71,6 +102,14 @@
   border: none;
   cursor: pointer;
   transition: background 0.3s;
+  margin: 0;
+  
+  @media (max-width: 600px) {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+  }
 }
 
 .modal-save-btn:hover {
@@ -87,8 +126,28 @@
   border: none;
   cursor: pointer;
   transition: background 0.3s;
+  margin: 0;
+  
+  @media (max-width: 600px) {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .modal-close-btn:hover {
   background-color: #555;
+}
+
+.modal-buttons-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
 } 

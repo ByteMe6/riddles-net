@@ -216,8 +216,10 @@ export default function Account() {
             {userPosition && (
               <p><strong>{translations[lang].yourPosition}:</strong> {userPosition}</p>
             )}
-            <button className="modal-save-btn" onClick={() => { setShowModal(true); setModalTab('username'); }} style={{ marginTop: '1.5rem' }}>{translations[lang].changeUsername}</button>
-            <button className="modal-save-btn" onClick={() => { setShowModal(true); setModalTab('password'); }} style={{ marginLeft: 12 }}>{translations[lang].changePassword}</button>
+            <div className="account-buttons-container">
+              <button className="modal-save-btn" onClick={() => { setShowModal(true); setModalTab('username'); }}>{translations[lang].changeUsername}</button>
+              <button className="modal-save-btn" onClick={() => { setShowModal(true); setModalTab('password'); }}>{translations[lang].changePassword}</button>
+            </div>
             <div style={{ marginTop: '1rem' }}>
               <label>
                 {translations[lang].language}

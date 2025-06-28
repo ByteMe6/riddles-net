@@ -40,6 +40,13 @@
   
       &:hover {
         background-color: #3d3d3d;
+        text-decoration: none;
+        &::after{
+          content: "";
+        }
+        &::before{
+          content: "";
+        }
       }
     }
   }
@@ -51,5 +58,10 @@
   
     .nav-item a .nav-icon {
       font-size: 1.6rem;
+    }
+  }
+  @media (max-width: 7200px) {
+    .nav-item a:hover {
+      text-decoration: none;
     }
   }

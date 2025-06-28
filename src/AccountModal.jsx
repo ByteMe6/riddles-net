@@ -9,7 +9,9 @@ export default function AccountModal({ isOpen, onClose, title, closeLabel, child
           <h3>{title}</h3>
         </div>
         {children}
-        <button className="modal-close-btn" onClick={onClose} style={{ marginTop: 16 }}>{closeLabel}</button>
+        <div className="modal-buttons-container">
+          <button className="modal-close-btn" onClick={onClose}>{closeLabel}</button>
+        </div>
       </div>
     </div>
   );
