@@ -115,14 +115,12 @@ export default function Account() {
     }
   }, [showModal, modalTab]);
 
-  // Сброс пароля только при открытии модалки смены пароля
   useEffect(() => {
     if (showModal && modalTab === 'password') {
       setNewPassword('');
     }
   }, [showModal, modalTab]);
 
-  // Функция смены имени пользователя
   const handleUsernameChange = async (e) => {
     e.preventDefault();
     setMessage('');
@@ -138,7 +136,6 @@ export default function Account() {
     }
   };
 
-  // Функция смены пароля
   const handlePasswordChange = async (e) => {
     e.preventDefault();
     setMessage('');
@@ -152,7 +149,6 @@ export default function Account() {
     }
   };
 
-  // Функция смены языка
   const handleLangChange = async (newLang) => {
     setLang(newLang);
     setContextLang(newLang);
@@ -166,11 +162,11 @@ export default function Account() {
     }
   };
 
-  // Кастомный select
+
   function CustomSelect({ value, onChange, options }) {
     const [open, setOpen] = useState(false);
     const selectRef = useRef(null);
-    // Закрытие по клику вне
+
     useEffect(() => {
       if (!open) return;
       function handleClick(e) {
